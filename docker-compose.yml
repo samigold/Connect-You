@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: konnect
+      POSTGRES_PASSWORD: konnectpass
+      POSTGRES_DB: konnect_db
+    ports:
+     - "5433:5432"
+    volumes:
+     - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

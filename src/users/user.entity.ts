@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from 'typeorm';
+import { Exclude } from 'class-transformer';
+import { Task } from 'src/tasks/task.entity';
 
 export enum UserRole {
     CLIENT = 'client',
@@ -13,6 +15,7 @@ export class User {
     @Column({ unique: true })
     email: string;
 
+    @Exclude()
     @Column()
     password: string;
 
@@ -24,4 +27,7 @@ export class User {
 
     @CreateDateColumn()
     createdAt: Date;
+
+    @OneToMany(() => Task, (task) => task.user)
+    tasks: Task[]
 }

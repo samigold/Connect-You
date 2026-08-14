@@ -16,7 +16,7 @@ import { TasksModule } from './tasks/tasks.module';
       password: 'konnectpass',
       database: 'konnect_db',
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: false,
     }),
     UsersModule,
     AuthModule,
